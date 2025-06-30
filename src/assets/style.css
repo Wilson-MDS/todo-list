@@ -1,0 +1,405 @@
+
+
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #01b963 0%, #440188 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  min-height: 500px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+/* Formulário */
+.todo-form {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* Botões */
+.btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-edit, .btn-remove {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background: #f8f9fa;
+}
+
+.btn-remove:hover {
+  background: #ffe6e6;
+}
+
+/* Lista de tarefas */
+.todo-list {
+  margin-top: 2rem;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.todo-count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.todos {
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s;
+  background: white;
+}
+
+.todo-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+  background: #f8f9fa;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 1rem;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  user-select: none;
+}
+
+.completed-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 2px solid #667eea;
+  border-radius: 3px;
+  font-size: 1rem;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+/* Animações */
+.todo-enter-active, .todo-leave-active {
+  transition: all 0.3s;
+}
+
+.todo-enter-from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.todo-leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .form-group {
+    flex-direction: column;
+  }
+  
+  .todo-input {
+    margin-bottom: 1rem;
+  }
+  
+  .list-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .todo-item {
+    padding: 0.75rem;
+  }
+}
+
+
+.todo-filter {
+  margin-bottom: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.status-select {
+  padding: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.priority-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.priority-buttons {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.priority-btn {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.priority-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .filter-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .priority-filter {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+/* Estilos para prioridades */
+.priority-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.priority-high {
+  background-color: rgba(255, 76, 76, 0.1);
+  color: #ff4c4c;
+  border-left: 3px solid #ff4c4c;
+}
+
+.priority-medium {
+  background-color: rgba(255, 165, 0, 0.1);
+  color: #ffa500;
+  border-left: 3px solid #ffa500;
+}
+
+.priority-low {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border-left: 3px solid #4caf50;
+}
+
+.todo-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.todo-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.priority-select {
+  padding: 1.2em;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+}
+
+.rodape {
+				font-size: 140%;
+				font-family:Verdana, Geneva, Tahoma, sans-serif ;
+				background: linear-gradient(360deg, #10dc2b, #6d6db6);
+				-webkit-text-fill-color: inherit;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 7px -7px 7px rgba(0, 0, 0, 0.555);
+        text-align: center;
+}
